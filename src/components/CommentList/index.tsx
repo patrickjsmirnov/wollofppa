@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, ReactNode } from 'react';
 import { CommentType } from '../../types/index'
 import Comment from '../Comment'
 import styles from './styles.module.css'
@@ -6,21 +6,8 @@ import { COMMENTS } from '../../data/simpleSample'
 import AuthorList from '../AuthorList'
 
 const CommentList: FC = () => {
-  const [activeUser, setActiveUser] = useState(0)
-
-  function renderComment(comment:CommentType, key: string, level: number) {
-    return (
-      <Comment 
-        comment={ comment } 
-        idx={ key }
-        level={ level }
-        activeUser={ activeUser }
-        setActiveUser={ setActiveUser }
-      />
-    )
-  }
-
-  const listOfComments:any[] = []
+  const [activeUser, setActiveUser] = useState<number>(0)
+  const listOfComments:ReactNode[] = []
   const authors: string[] = []
 
   function renderComments(comments: CommentType[], level: number = 1) {
@@ -28,16 +15,29 @@ const CommentList: FC = () => {
     
     comments.forEach((comment, idx) => {
 
+      // todo attention
       if (!authors.some(author => author === comment.author)) {
         authors.push(comment.author)
       }
 
-      const key: string = `${level}${idx}`      
-      listOfComments.push(renderComment(comment, key, level))
+      const key: string = `${level}${idx}`
 
-      if (comment.comments && comment.comments.length) {
-        const recLevel: number = level + 1
-        return renderComments(comment.comments, recLevel)
+      const CommentComponent:ReactNode = (
+        <Comment
+          comment={ comment }
+          idx={ key }
+          key={ key }
+          level={ level }
+          activeUser={ activeUser }
+          setActiveUser={ setActiveUser }
+        />
+      )
+
+      listOfComments.push(CommentComponent)
+
+      if (comment.comments.length) {
+        const recursionLevel: number = level + 1
+        return renderComments(comment.comments, recursionLevel)
       }
     })
 

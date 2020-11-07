@@ -6,21 +6,21 @@
   margin-bottom: 10px;
   text-align: left;
   padding: 5px 15px;
-  border-radius: 5px;
+  border-radius: 3px;
   cursor: pointer;
 }
 
-.commentActive {
+.active {
   border-color: var(--blue);
 }
 
-.commentAuthor {
+.author {
   font-weight: 600;
   margin-bottom: 5px;
   color: var(--main);
 }
 
-.commentMessage {
+.message {
   font-size: 0.9rem;
   color: var(--grey6b);
 }
