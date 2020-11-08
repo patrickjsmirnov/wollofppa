@@ -1,4 +1,4 @@
-## Test task for some good company
+## Test task for some company
 
 ### Input data
 ```javascript
