@@ -15,7 +15,7 @@ const CommentList: FC = () => {
     
     comments.forEach((comment, idx) => {
 
-      // todo attention
+      // todo use something like Set
       if (!authors.some(author => author === comment.author)) {
         authors.push(comment.author)
       }
@@ -25,7 +25,6 @@ const CommentList: FC = () => {
       const CommentComponent:ReactNode = (
         <Comment
           comment={ comment }
-          idx={ key }
           key={ key }
           level={ level }
           activeUser={ activeUser }
