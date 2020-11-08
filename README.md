@@ -1,6 +1,6 @@
 ## Test task for some good company
 
-### input data:
+### input data
 ```javascript
 const COMMENTS = [
   {
@@ -37,6 +37,8 @@ const COMMENTS = [
   }
 ]
 ```
+### output
+<img width="250" alt="comments" src="https://wollofppa.herokuapp.com/assets/comments.png">
 
 ## Live
 https://wollofppa.herokuapp.com/
